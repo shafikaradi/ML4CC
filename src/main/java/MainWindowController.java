@@ -17,16 +17,28 @@ public class MainWindowController implements Initializable{
     @FXML
     private TextField urlField;
 
+    Thread restRequest;
+    public MainWindowController(){
+
+        RestRequest jsonData = new RestRequest();
+        restRequest = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                jsonData.setConnection(urlField.getText()).readData().convertFromStringToArrayJson().convertFromJsonToString();
+            }
+        });
+
+    }
 
     public void initialize(URL location, ResourceBundle resources) {
 
-        Connection jsonData = new Connection();
+
 
         convertButton.setOnAction( action -> {
 
 
-            jsonData.setConnection(urlField.getText()).readData().convertFromStringToArrayJson().convertFromJsonToString();
 
+            restRequest.start();
 
         });
     }

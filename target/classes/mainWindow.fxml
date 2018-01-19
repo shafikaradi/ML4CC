@@ -6,12 +6,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="MainWindowController"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="MainWindowController"
+      prefHeight="400.0" prefWidth="600.0"
+      alignment="CENTER" spacing="20">
 
-    <TextField GridPane.columnIndex="0" GridPane.rowIndex="0" fx:id="urlField" promptText="URL"></TextField>
-    <Button GridPane.columnIndex="1" GridPane.rowIndex="1" text="Start Converting" fx:id="convertButton"></Button>
 
-</GridPane>
+    <children>
+
+        <TextField fx:id="urlField" promptText="URL" prefWidth="300"></TextField>
+        <Button  text="Start Converting" fx:id="convertButton"></Button>
+    </children>
+
+
+    <padding>
+        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+    </padding>
+
+</VBox>

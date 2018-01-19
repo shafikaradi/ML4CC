@@ -16,9 +16,9 @@ import org.json.JSONException;
 
 
 
-class Connection{
+class RestRequest{
 
-   private String url = "https://api.hitbtc.com/api/2/public/candles/ETHBTC?period=M30";
+   private String url;
    private URL urlObj;
    private HttpURLConnection con;
    private StringBuffer response;
@@ -29,9 +29,11 @@ class Connection{
        urlObj = new URL(url);
    }
 
-   public Connection setConnection(String url){
+   public RestRequest setConnection(String url){
 
     try{
+
+        this.url = url;
         setUrlObj(url);
         con = (HttpURLConnection) urlObj.openConnection();
         con.setRequestMethod("GET");
@@ -44,7 +46,7 @@ class Connection{
      return this;
    }
 
-   public Connection readData(){
+   public RestRequest readData(){
 
     
     try{
@@ -70,7 +72,7 @@ class Connection{
 
    }
 
-   public Connection convertFromStringToArrayJson(){
+   public RestRequest convertFromStringToArrayJson(){
 
 
        try {
@@ -87,9 +89,9 @@ class Connection{
        return this;
    }
 
-   public Connection convertFromJsonToString(){
+   public RestRequest convertFromJsonToString(){
 
-       File ctrCSV = new File("/Users/shafikalaradi/Desktop/ML4CC/ctr.csv");
+       File ctrCSV = new File("/Users/shafikalaradi/Desktop/ML4CC/"+this.url.substring(44,50)+".csv");
        String csv = CDL.toString(arrayOfExchanges);
        try {
            FileUtils.fileWrite(ctrCSV,csv);

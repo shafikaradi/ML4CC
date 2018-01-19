@@ -18,7 +18,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
       Parent root =  FXMLLoader.load(getClass().getResource("mainWindow.fxml"));
-      Scene mainScene = new Scene(root,300,275);
+      Scene mainScene = new Scene(root,500,150);
 
       primaryStage.setTitle("JSON-CSV Converter");
       primaryStage.setScene(mainScene);
